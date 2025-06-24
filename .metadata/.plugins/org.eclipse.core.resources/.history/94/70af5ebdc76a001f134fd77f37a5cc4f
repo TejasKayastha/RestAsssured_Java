@@ -1,0 +1,21 @@
+package org.api.automation;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class API_Automation {
+
+	String endPoint = "https://thetestingworldapi.com/api/studentsDetails/300000";
+	
+	@Test
+	public String getStudentDetails_TC01() {
+		
+		Response response = RestAssured.get(endPoint);
+		
+		System.out.println(response.getStatusCode());
+		return endPoint;
+		
+	};
+	}

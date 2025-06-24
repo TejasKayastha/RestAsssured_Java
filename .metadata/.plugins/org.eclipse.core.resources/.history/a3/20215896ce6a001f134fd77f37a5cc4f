@@ -1,0 +1,39 @@
+package org.api.automation;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class API_Automation {
+
+	static String endPoint = "https://thetestingworldapi.com/api/studentsDetails/10387912";
+	
+	@Test
+	public static String getStudentDetails_TC01() {
+		
+		Response response = RestAssured.get(endPoint);
+		
+		System.out.println(response.getStatusCode());
+		System.out.println(response.getHeader("content-Type"));
+		System.out.println(response.getHeaders());
+		
+		System.out.println("=====================================");
+		
+		System.out.println(response.asString());
+		System.out.println(response.asPrettyString());
+
+		System.out.println("=====================================");
+
+		Assert.assertEquals(response.getHeader("content-Type"), "application/json; charset=utf-8");
+		Assert.assertTrue(response.asString().contains("oniu"));
+		
+		return endPoint;
+		
+	}
+	
+	public static void main(String arg[]) {
+		getStudentDetails_TC01();
+		}
+	}

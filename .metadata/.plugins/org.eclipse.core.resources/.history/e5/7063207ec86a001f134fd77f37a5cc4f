@@ -1,0 +1,27 @@
+package org.api.automation;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class API_Automation {
+
+	static String endPoint = "https://thetestingworldapi.com/api/studentsDetails/300000";
+	
+	@Test
+	public static String getStudentDetails_TC01() {
+		
+		Response response = RestAssured.get(endPoint);
+		
+		System.out.println(response.getStatusCode());
+		System.out.println(response.getHeader("content-Type"));
+		System.out.println(response.getHeaders());
+		return endPoint;
+		
+	}
+	
+	public static void main(String arg[]) {
+		getStudentDetails_TC01();
+		}
+	}
